@@ -1,9 +1,6 @@
 "use client"
-import Link from "next/link"
-import { BackgroundRadialRight } from "../BackgroundRadialRight"
 import { MotionTransition } from "../MotionTransition"
 import Image from "next/image"
-import { Reveal } from "../Reveal"
 import { getBasePath } from '../../utils/utils'
 
 export function Hero() {

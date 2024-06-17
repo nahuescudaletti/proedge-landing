@@ -1,10 +1,7 @@
 "use client"
-import Link from "next/link"
 import { BackgroundRadialRight } from "../BackgroundRadialRight"
 import { MotionTransition } from "../MotionTransition"
-import Image from "next/image"
 import { Reveal } from "../Reveal"
-import { getBasePath } from '../../utils/utils'
 
 
 export function FirstBlock() {
@@ -29,7 +26,7 @@ export function FirstBlock() {
                     </div>
                     <div className="md:col-span-1 grid grid-cols-1 gap-8">
                         <MotionTransition>
-                            <div className="border-transparent bg-radialBlack shadow-dark rounded-3xl">
+                            <div className="border-transparent shadow-dark rounded-3xl bg-white bg-opacity-5 backdrop-blur-lg">
                                 <div className="p-6">
                                     <Reveal>
                                         <h3 className="text-3xl font-semibold">Mission</h3>
@@ -41,7 +38,7 @@ export function FirstBlock() {
                             </div>
                         </MotionTransition>
                         <MotionTransition>
-                            <div className="border-transparent bg-radialBlack shadow-dark rounded-3xl">
+                            <div className="border-transparent shadow-dark rounded-3xl bg-white bg-opacity-5 backdrop-blur-lg">
                                 <div className="p-6">
                                     <Reveal>
                                         <h3 className="text-3xl font-semibold">Vision</h3>
@@ -53,7 +50,7 @@ export function FirstBlock() {
                             </div>
                         </MotionTransition>
                         <MotionTransition>
-                            <div className="border-transparent bg-radialBlack shadow-dark rounded-3xl">
+                            <div className="border-transparent shadow-dark rounded-3xl bg-white bg-opacity-5 backdrop-blur-lg">
                                 <div className="p-6">
                                     <Reveal>
                                         <h3 className="text-3xl font-semibold">Values</h3>
