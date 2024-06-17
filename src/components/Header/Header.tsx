@@ -25,7 +25,7 @@ export function Header() {
 
     return (
         <MotionTransition>
-            <nav className="flex flex-wrap items-center justify-between max-w-5xl p-4 mx-auto md:py- bg-transparent">
+            <nav className="flex flex-wrap items-center justify-between max-w-10xl p-4 mx-auto md:py- bg-transparent">
                 <div className="flex items-center cursor-pointer">
                     <Image src={`${getBasePath()}/assets/PE_logo_white_1_.svg`} width="150" height="100" alt="Logo Bank" />
                 </div>
@@ -53,6 +53,8 @@ export function Header() {
                             </div>
                         ))}
                     </div>
+                </div>
+                <div className="hidden md:flex lg:flex items-center cursor-pointer mr-10 lg:pr-10">
                 </div>
             </nav>
         </MotionTransition>
