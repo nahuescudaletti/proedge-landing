@@ -12,13 +12,18 @@ export function Hero() {
         <div className="relative h-screen bg-cover bg-center z-0" style={{ backgroundImage: `url(${getBasePath()}/assets/gradient.png)` }}>
             <div className="flex flex-col justify-center items-center h-full text-white">
                 <Reveal>
-                    <h3 className="text-xl md:text-3xl font-light font-montserrat mb-4">we don’t do average, we do awesome</h3>
+                    <h3 className="text-center text-base md:text-xl lg:text-3xl font-light font-montserrat">We don’t do average, we do awesome</h3>
                 </Reveal>
                 <Reveal>
-                    <h1 className="text-4xl md:text-6xl font-bold font-montserrat mb-8">ProEdge</h1>
+                    <Image
+                        src={`${getBasePath()}/assets/PE_logo_white_1_.svg`} // Replace with your image path
+                        alt="PROEDGE" // Provide an appropriate alt text
+                        width={500} // Set the desired width
+                        height={300} // Set the desired height
+                    />
                 </Reveal>
                 <Reveal>
-                    <p className="text-sm md:text-base font-montserrat">The perfect place to create brand awareness, community and social media capitalization.</p>
+                    <p className="text-center text-xs md:text-sm lg:text-base font-montserrat">The perfect place to create brand awareness, community and social media capitalization.</p>
                 </Reveal>
             </div>
         </div>
