@@ -2,6 +2,7 @@
 import { MotionTransition } from "../MotionTransition"
 import Image from "next/image"
 import { getBasePath } from '../../utils/utils'
+import Link from "next/link"
 
 export function Hero() {
     return (
@@ -15,7 +16,11 @@ export function Hero() {
                             width={600} // Set the desired width
                             height={400} // Set the desired height
                         />
-                        <p className="text-center text-xs md:text-sm lg:text-2xl font-montserrat">The perfect place to create brand awareness, community and social media capitalization.</p>
+                        <p className="text-center text-xs md:text-sm lg:text-2xl font-montserrat mb-8">The perfect place to create brand awareness, community and social media capitalization.</p>
+                        <div className="my-10">
+                            <Link href="#form" className="px-4 py-3 rounded-md bg-OrangeRadial font-regular font-montserrat">Free SWOT analysis</Link>
+                        </div>
+
                 </div>
             </div>
         </MotionTransition>

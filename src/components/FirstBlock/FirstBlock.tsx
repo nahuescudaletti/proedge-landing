@@ -12,7 +12,7 @@ export function FirstBlock() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
                     <div className="md:col-span-1 flex flex-col justify-center">
                         <Reveal>
-                            <h1 className="text-6xl font-semibold text-center">
+                            <h1 className="text-6xl font-semibold text-center font-montserrat">
                                 <span className="block degradedBlue bg-Orange">
                                     About us
                                 </span>
