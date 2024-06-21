@@ -18,13 +18,13 @@ interface TestimonialType {
 
 export default function Testimonials() {
     return (
-        <div className="relative min-h-screen p-8 font-montserrat">
+        <div className="relative px-6 py-20 md:py-40">
             <BackgroundRadialLeft />
             <BackgroundRadialRight />
             <div className="flex flex-col items-center justify-center">
                 <p className="text-lg text-center font-montserrat">Testimonials</p>
-                <h1 className="text-xl md:text-4xl font-bold text-center mb-10 font-montserrat">Reach your goals just like them</h1>
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-[960px] relative z-10">
+                <h1 className="text-xl md:text-4xl font-semibold text-center mb-10 font-montserrat">Reach your goals just like them</h1>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-[1200px] relative z-10">
                     {dataTestimonials.map((testimonial, index) => (
                         <TestimonialCard
                             key={index}
@@ -49,7 +49,7 @@ function TestimonialCard(props: TestimonialType) {
         >
             {/* Avatar and name */}
             <section className="flex items-center gap-4">
-                <div className="relative w-20 h-20">
+                <div className="relative w-10 h-10 md:w-20 md:h-20">
                     <Image
                         src={props.avatarImg}
                         alt="profile-img"
@@ -63,8 +63,8 @@ function TestimonialCard(props: TestimonialType) {
                 </div>
             </section>
 
-            <h3 className="font-semibold text-lg">{props.heading}</h3>
-            <p className="text-sm opacity-70 leading-relaxed">
+            <h3 className="font-semibold text-base md:text-lg">{props.heading}</h3>
+            <p className="text-xs md:text-sm opacity-70 leading-relaxed">
                 “{props.description}”
             </p>
         </div>

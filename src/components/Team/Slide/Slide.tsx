@@ -25,7 +25,7 @@ export function Slide() {
                 clickable: true
             }}
             modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-            className="h-[250px] w-full md:max-w-5xl"
+            className="h-[250px] w-full md:max-w-7xl"
         >
             {dataTeam.map(({ id, name, work, testimonial, image }) => (
                 <SwiperSlide key={id} className="my-5 cursor-pointer md:px-10">

@@ -6,18 +6,13 @@ import { Slide } from "./Slide"
 
 export function Team() {
     return (
-        <div className="relative p-8 md:py-40" id="testimonios">
+        <div className="relative p-8 md:py-20" id="testimonios">
             <BackgroundRadialLeft />
-            <div className="grid max-w-5xl gap-8 mx-auto my-6 md:grid-cols-2">
+            <div className="grid max-w-6xl gap-8 mx-auto my-6 md:grid-cols-2">
                 <Reveal>
-                    <h2 className="text-5xl mb-5 font-semibold">
-                        Team
+                    <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10 font-montserrat">
+                        Meet our team
                     </h2>
-                </Reveal>
-                <Reveal>
-                    <div className="self-center">
-                        <p className="text-primaryDark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, saepe magnam! Porro saepe quasi fuga..</p>
-                    </div>
                 </Reveal>
             </div>
 

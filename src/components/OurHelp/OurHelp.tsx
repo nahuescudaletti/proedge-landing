@@ -1,27 +1,34 @@
-"use client"
-import { RiArrowRightLine } from 'react-icons/ri';
-import { BackgroundRadialRight } from "../BackgroundRadialRight"
-import { MotionTransition } from "../MotionTransition"
-import { Reveal } from "../Reveal"
-import { dataOurhelp } from "./DataOurHelp"
+"use client";
 
+import { RiArrowRightLine } from 'react-icons/ri';
+import { BackgroundRadialRight } from "../BackgroundRadialRight";
+import { MotionTransition } from "../MotionTransition";
+import { Reveal } from "../Reveal";
+import { dataOurhelp } from "./DataOurHelp";
+import { useRouter } from 'next/navigation';
 
 export function OurHelp() {
+    const router = useRouter();
+
+    const handleLearnMore = (title: string, description: string) => {
+        router.push(`/FormProducts?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`);
+    };
+
     return (
         <div className="relative px-4 py-20 md:py-20">
             <BackgroundRadialRight />
             <div className="max-w-7xl mx-auto">
-                <MotionTransition>          
-                    <div className="flex flex-col justify-center items-center h-full text-white">
+                <MotionTransition>
+                    <div className="flex flex-col justify-center items-center text-center h-full text-white">
                         <Reveal>
-                            <h1 className="text-5xl font-semibold font-montserrat">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
                                 <span className="block degradedBlue bg-Orange">
                                     Everything you can't do without our help
                                 </span>
                             </h1>
                         </Reveal>
                         <Reveal>
-                            <p className="w-full mx-auto mt-5 text-xl font-light font-montserrat tracking-wide text-center mb-10">
+                            <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
                                 Free up valuable time by delegating this type of work to us, and together we'll grow your brand.
                             </p>
                         </Reveal>
@@ -34,17 +41,20 @@ export function OurHelp() {
                                 <div className="p-6 h-full flex flex-col justify-between">
                                     <div>
                                         <Reveal>
-                                            <h3 className="text-3xl font-regular font-montserrat">{title}</h3>
+                                            <h3 className="text-xl md:text-2xl font-regular font-montserrat">{title}</h3>
                                         </Reveal>
                                         <Reveal>
-                                            <p className="font-thin">{description}</p>
+                                            <p className="text-sm md:text-base font-thin">{description}</p>
                                         </Reveal>
                                     </div>
                                     <Reveal>
-                                        <a href="#" className="text-orange-500 mt-4 flex items-center space-x-2 text-sm">
+                                        <button
+                                            onClick={() => handleLearnMore(title, description)}
+                                            className="text-orange-500 mt-4 flex items-center space-x-2 text-sm"
+                                        >
                                             Learn more
                                             <RiArrowRightLine className="text-orange-500 text-m" />
-                                        </a>
+                                        </button>
                                     </Reveal>
                                 </div>
                             </div>
@@ -53,5 +63,5 @@ export function OurHelp() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
