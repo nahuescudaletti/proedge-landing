@@ -3,7 +3,7 @@ import { RiArrowRightLine } from 'react-icons/ri';
 import { BackgroundRadialRight } from "../BackgroundRadialRight"
 import { MotionTransition } from "../MotionTransition"
 import { Reveal } from "../Reveal"
-import { dataOurhelp } from "./DataOurHelp"
+import { dataOurhelp } from '../OurHelp/DataOurHelp';
 
 
 export function OurHelp() {
