@@ -10,9 +10,9 @@ export function Footer() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-6">
                     <div className="md:w-1/5 mb-4 md:mb-0 md:mr-6">
-                        <Image src={`${getBasePath()}/assets/logotop.png`} width={200} height={40} alt="Logo Bank" />
+                        <Image src={`${getBasePath()}/assets/PE_logo_white_1_.svg`} width={200} height={40} alt="Logo Bank" />
                     </div>
-                    <div className="flex flex-col md:flex-row md:w-4/5 justify-center items-center md:gap-24">
+                    <div className="flex flex-col md:flex-row md:w-4/5 justify-around items-center md:gap-24">
                         {dataFooter.map(({ id, name, idLink }) => (
                             <div key={id} className="text-gray-300 text-base md:text-lg lg:text-xl mb-4 md:mb-0">
                                 <a href={idLink}>

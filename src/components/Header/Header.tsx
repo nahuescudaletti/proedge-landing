@@ -38,7 +38,7 @@ export function Header() {
                                     <span>Products</span> 
                                     <IoIosArrowDown className={`ml-1 ${openProductDropdown ? 'transform rotate-180' : ''}`} />
                                 </button>
-                                <div className={`${openProductDropdown ? 'block' : 'hidden'} absolute left-0 mt-2 w-48 bg-slate-900 rounded-lg shadow-lg z-20`}>
+                                <div className={`${openProductDropdown ? 'block' : 'hidden'} absolute left-0 mt-2 w-48 bg-slate-900 rounded-lg shadow-lg z-10`}>
                                     <div className="py-1">
                                         {DataDropDown.map(({ id, name, idLink }) => (
                                             <a key={id} href={idLink} className="block px-4 py-2 text-white-800 hover:bg-orange-500 hover:text-black" onClick={toggleMobileMenu}>{name}</a>
