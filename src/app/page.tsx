@@ -21,9 +21,6 @@ export default function Home() {
       <OurHelp/>
       <Testimonials/>
       <Team/>
-      <BestBusiness/>
-      <ChooseYourCards />
-      <ControlBilling />
       <PaymentsMethods />
       <Footer />
     </>

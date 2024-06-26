@@ -9,7 +9,7 @@ export function CtaDark() {
                 <div className="grid items-center md:grid-cols-2">
                     <div className="my-8">
                         <Reveal>
-                            <h3 className="text-3xl font-bold">Lorem ipsum dolor sit amet consectetur.</h3>
+                            <h3 className="text-3xl font-bold">Newsletter</h3>
                         </Reveal>
                         <Reveal>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus doloribus quisquam soluta eius, quibusdam tempore.</p>
