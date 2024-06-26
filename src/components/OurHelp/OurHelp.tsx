@@ -15,7 +15,7 @@ export function OurHelp() {
     };
 
     return (
-        <div className="relative px-4 py-20 md:py-20">
+        <div className="relative px-4 py-20 md:py-20" id='products'>
             <BackgroundRadialRight />
             <div className="max-w-7xl mx-auto">
                 <MotionTransition>

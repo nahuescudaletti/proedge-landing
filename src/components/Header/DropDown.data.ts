@@ -2,31 +2,31 @@ export const DataDropDown = [
   {
     id: 1,
     name: "Brand identity",
-    idLink: "#brandidentity",
+    idLink: "#products",
   },
   {
     id: 2,
     name: "SSM graphic design",
-    idLink: "#SSMgraphicdesign",
+    idLink: "#products",
   },
   {
     id: 3,
     name: "SMM & CMM",
-    idLink: "#SMM&CMM",
+    idLink: "#products",
   },
   {
     id: 4,
     name: "Website development",
-    idLink: "#Websitedevelopment",
+    idLink: "#products",
   },
   {
     id: 5,
     name: "Meta ads",
-    idLink: "#Metaads",
+    idLink: "#products",
   },
   {
     id: 6,
     name: "Video editing",
-    idLink: "#videoediting",
+    idLink: "#products",
   },
 ];

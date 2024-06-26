@@ -5,7 +5,7 @@ import { Reveal } from "../Reveal";
 
 export function FirstBlock() {
     return (
-        <div className="relative p-4 md:py-40">
+        <div className="relative p-4 md:py-40" id="aboutus">
             <BackgroundRadialRight />
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
