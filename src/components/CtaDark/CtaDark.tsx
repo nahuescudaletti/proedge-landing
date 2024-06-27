@@ -1,29 +1,27 @@
 import { useState, FormEvent } from 'react';
+import emailjs from 'emailjs-com';
 import { Reveal } from '../Reveal';
-import { init, subscribeToList } from '@mailchimp/mailchimp_marketing'; // Importa las funciones necesarias
 
 export function CtaDark() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    // Inicializa la configuración de Mailchimp con tus credenciales
-    init({
-        apiKey: process.env.MAILCHIMP_API_KEY, // Tu clave API de Mailchimp
-        server: process.env.MAILCHIMP_SERVER, // El subdominio de Mailchimp (p. ej., us5)
-    });
-
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            // Realiza la suscripción usando Mailchimp
-            const response = await subscribeToList({
-                listId: process.env.MAILCHIMP_LIST_ID, // ID de la lista de Mailchimp
-                email: { email }, // Datos del suscriptor
-            });
+        const templateParams = {
+            useremail: email,
+        };
 
-            console.log('Subscription successful!', response);
+        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+        const templateId = process.env.NEXT_PUBLIC_EMAILJS_NEWSLETTER_TEMPLATE_ID!;
+        const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID!;
+
+        try {
+            // Enviar el formulario usando EmailJS
+            const response = await emailjs.send(serviceId, templateId, templateParams, userId);
+            console.log('Email successfully sent!', response);
 
             // Mostrar el modal de éxito
             setShowSuccessModal(true);
@@ -34,7 +32,7 @@ export function CtaDark() {
                 setEmail('');
             }, 3000);
         } catch (error) {
-            console.error('Subscription failed:', error);
+            console.error('Email send failed:', error);
             setMessage('There was an error subscribing. Please try again.');
         }
     };
@@ -55,6 +53,7 @@ export function CtaDark() {
                     </p>
                 </Reveal>
                 <form onSubmit={handleSubmit} className="w-full max-w-lg">
+                    {/* Ajusta el ancho del formulario con max-w-lg o el valor deseado */}
                     <div className="flex">
                         <input
                             type="email"
