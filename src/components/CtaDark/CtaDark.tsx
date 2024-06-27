@@ -1,6 +1,5 @@
 import { useState, FormEvent } from 'react';
-import emailjs from 'emailjs-com';
-import { Reveal } from '../Reveal';
+import axios from 'axios';
 
 export function CtaDark() {
     const [email, setEmail] = useState('');
@@ -10,29 +9,21 @@ export function CtaDark() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const templateParams = {
-            useremail: email,
-        };
-
-        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-        const templateId = process.env.NEXT_PUBLIC_EMAILJS_NEWSLETTER_TEMPLATE_ID!;
-        const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID!;
-
         try {
-            // Enviar el formulario usando EmailJS
-            const response = await emailjs.send(serviceId, templateId, templateParams, userId);
-            console.log('Email successfully sent!', response);
+            const response = await axios.post('/.netlify/functions/subscribeToEmailOctopus', {
+                email,
+            });
 
-            // Mostrar el modal de éxito
+            console.log('Subscription successful:', response.data);
+
             setShowSuccessModal(true);
 
-            // Limpiar los campos del formulario después de 3 segundos
             setTimeout(() => {
                 setShowSuccessModal(false);
                 setEmail('');
             }, 3000);
         } catch (error) {
-            console.error('Email send failed:', error);
+            console.error('Error subscribing:', error);
             setMessage('There was an error subscribing. Please try again.');
         }
     };
@@ -40,20 +31,15 @@ export function CtaDark() {
     return (
         <div className="px-6 mb-20 md:mt-36">
             <div className="flex flex-col items-center text-white">
-                <Reveal>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
-                        <span className="block degradedBlue bg-Orange">
-                            Newsletter
-                        </span>
-                    </h1>
-                </Reveal>
-                <Reveal>
-                    <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
-                        Receive our latest news directly in your inbox.
-                    </p>
-                </Reveal>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
+                    <span className="block degradedBlue bg-Orange">
+                        Newsletter
+                    </span>
+                </h1>
+                <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
+                    Receive our latest news directly in your inbox.
+                </p>
                 <form onSubmit={handleSubmit} className="w-full max-w-lg">
-                    {/* Ajusta el ancho del formulario con max-w-lg o el valor deseado */}
                     <div className="flex">
                         <input
                             type="email"
