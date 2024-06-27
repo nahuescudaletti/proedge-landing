@@ -36,6 +36,6 @@ export const dataFooter = [
   {
     id: 3,
     name: 'Newsletter',
-    idLink: "#Newsletter"
+    idLink: "#newsletter"
   },
 ];

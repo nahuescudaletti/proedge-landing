@@ -28,7 +28,7 @@ export function Footer() {
                 <div className="items-center justify-between md:flex">
                     <div className="my-3 text-xs md:text-lg">
                         <Reveal>
-                            Lorem ipsum dolor sit. All Rights Reserved.
+                            ProEdge a space to create. All Rights Reserved.
                         </Reveal>
                     </div>
                     <div className="flex gap-5 items-center">

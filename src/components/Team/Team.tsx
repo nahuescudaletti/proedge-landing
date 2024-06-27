@@ -6,7 +6,7 @@ import { Slide } from "./Slide"
 
 export function Team() {
     return (
-        <div className="relative p-8 md:py-20" id="testimonios">
+        <div className="relative p-8 md:pt-20" id="testimonios">
             <BackgroundRadialLeft />
             <div className="grid max-w-6xl gap-8 mx-auto my-6 md:grid-cols-2">
                 <Reveal>
