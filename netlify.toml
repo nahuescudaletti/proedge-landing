@@ -19,10 +19,10 @@ status = 200
   q = ":quality"
 
 [build]
-  command = "next build && next export"
+  command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "14"
+  NODE_VERSION = "16.14.0"
 
 [context]
 
