@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch'; // Si estás usando módulos ES
+// const fetch = require('node-fetch'); // Si estás usando CommonJS
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const { email } = JSON.parse(event.body);
     const apiKey = process.env.EMAILOCTOPUS_API_KEY;
     const listId = process.env.EMAILOCTOPUS_LIST_ID;
