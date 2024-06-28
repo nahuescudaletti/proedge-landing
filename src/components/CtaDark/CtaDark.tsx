@@ -1,5 +1,4 @@
 import { useState, FormEvent } from 'react';
-import { Reveal } from '../Reveal';
 
 export function CtaDark() {
     const [email, setEmail] = useState('');
@@ -42,18 +41,12 @@ export function CtaDark() {
     return (
         <div className="px-6 mb-20 md:mt-36">
             <div className="flex flex-col items-center text-white">
-                <Reveal>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
-                        <span className="block degradedBlue bg-Orange">
-                            Newsletter
-                        </span>
-                    </h1>
-                </Reveal>
-                <Reveal>
-                    <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
-                        Receive our latest news directly in your inbox.
-                    </p>
-                </Reveal>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
+                    <span className="block degradedBlue bg-Orange">Newsletter</span>
+                </h1>
+                <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
+                    Receive our latest news directly in your inbox.
+                </p>
                 <form onSubmit={handleSubmit} className="w-full max-w-lg">
                     <div className="flex">
                         <input
@@ -64,7 +57,10 @@ export function CtaDark() {
                             className="flex-1 px-4 py-3 rounded-l-md focus:outline-none focus:ring-2 focus:ring-OrangeRadial bg-white text-black"
                             required
                         />
-                        <button type="submit" className="px-4 py-3 rounded-r-md bg-OrangeRadial text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-50">
+                        <button
+                            type="submit"
+                            className="px-4 py-3 rounded-r-md bg-OrangeRadial text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                        >
                             Subscribe
                         </button>
                     </div>

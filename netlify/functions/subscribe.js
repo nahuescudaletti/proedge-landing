@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -7,8 +7,8 @@ exports.handler = async (event) => {
 
     try {
         const { email } = JSON.parse(event.body);
-        const listId = process.env.EMAILOCTOPUS_LIST_ID;
-        const apiKey = process.env.EMAILOCTOPUS_API_KEY;
+        const listId = process.env.EMAIL_OCTOPUS_LIST_ID;
+        const apiKey = process.env.EMAIL_OCTOPUS_API_KEY;
 
         const data = {
             api_key: apiKey,
