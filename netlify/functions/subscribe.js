@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
@@ -9,6 +7,9 @@ exports.handler = async (event) => {
         const { email } = JSON.parse(event.body);
         const listId = process.env.EMAIL_OCTOPUS_LIST_ID;
         const apiKey = process.env.EMAIL_OCTOPUS_API_KEY;
+
+        // Importar node-fetch dinámicamente
+        const fetch = await import('node-fetch').then(module => module.default);
 
         const data = {
             api_key: apiKey,
