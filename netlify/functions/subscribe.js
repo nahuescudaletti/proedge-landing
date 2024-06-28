@@ -1,17 +1,21 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 exports.handler = async (event) => {
-    const { email } = JSON.parse(event.body);
-    const apiKey = process.env.EMAILOCTOPUS_API_KEY;
-    const listId = process.env.EMAILOCTOPUS_LIST_ID;
-
-    const data = {
-        api_key: apiKey,
-        email_address: email,
-        status: 'SUBSCRIBED',
-    };
+    if (event.httpMethod !== 'POST') {
+        return { statusCode: 405, body: 'Method Not Allowed' };
+    }
 
     try {
+        const { email } = JSON.parse(event.body);
+        const listId = process.env.EMAILOCTOPUS_LIST_ID;
+        const apiKey = process.env.EMAILOCTOPUS_API_KEY;
+
+        const data = {
+            api_key: apiKey,
+            email_address: email,
+            status: 'SUBSCRIBED',
+        };
+
         const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${listId}/contacts`, {
             method: 'POST',
             headers: {
@@ -21,7 +25,8 @@ exports.handler = async (event) => {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const errorText = await response.text();
+            throw new Error(`Failed to subscribe contact: ${errorText}`);
         }
 
         const result = await response.json();
@@ -30,6 +35,7 @@ exports.handler = async (event) => {
             body: JSON.stringify(result),
         };
     } catch (error) {
+        console.error('Failed to subscribe contact:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: error.message }),
