@@ -5,8 +5,8 @@ exports.handler = async (event) => {
 
     try {
         const { email } = JSON.parse(event.body); // Extraer el campo de email del cuerpo JSON
-        const listId = process.env.EMAIL_OCTOPUS_LIST_ID;
-        const apiKey = process.env.EMAIL_OCTOPUS_API_KEY;
+        const listId = process.env.BRAVO_LIST_ID;
+        const apiKey = process.env.BRAVO_API_KEY;
 
         // Importar node-fetch dinámicamente
         const fetch = await import('node-fetch').then(module => module.default);
@@ -14,10 +14,9 @@ exports.handler = async (event) => {
         const data = {
             api_key: apiKey,
             email_address: email,
-            status: 'SUBSCRIBED',
         };
 
-        const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${listId}/contacts`, {
+        const response = await fetch(`https://api.bravodotcom.com/lists/${listId}/members`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
