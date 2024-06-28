@@ -4,7 +4,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { email } = JSON.parse(event.body);
+        const { email } = JSON.parse(event.body); // Extraer el campo de email del cuerpo JSON
         const listId = process.env.EMAIL_OCTOPUS_LIST_ID;
         const apiKey = process.env.EMAIL_OCTOPUS_API_KEY;
 
