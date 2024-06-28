@@ -9,22 +9,13 @@ export function CtaDark() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const apiKey = process.env.NEXT_PUBLIC_EMAILOCTOPUS_API_KEY;
-        const listId = process.env.NEXT_PUBLIC_EMAILOCTOPUS_LIST_ID;
-
-        const data = {
-            api_key: apiKey,
-            email_address: email,
-            status: 'SUBSCRIBED',
-        };
-
         try {
-            const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${listId}/contacts`, {
+            const response = await fetch('/.netlify/functions/subscribe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ email }),
             });
 
             if (!response.ok) {
