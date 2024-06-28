@@ -1,5 +1,4 @@
 import { useState, FormEvent } from 'react';
-import emailjs from 'emailjs-com';
 import { Reveal } from '../Reveal';
 
 export function CtaDark() {
@@ -10,18 +9,30 @@ export function CtaDark() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const templateParams = {
-            useremail: email,
+        const apiKey = process.env.NEXT_PUBLIC_EMAILOCTOPUS_API_KEY;
+        const listId = process.env.NEXT_PUBLIC_EMAILOCTOPUS_LIST_ID;
+
+        const data = {
+            api_key: apiKey,
+            email_address: email,
+            status: 'SUBSCRIBED',
         };
 
-        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-        const templateId = process.env.NEXT_PUBLIC_EMAILJS_NEWSLETTER_TEMPLATE_ID!;
-        const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID!;
-
         try {
-            // Enviar el formulario usando EmailJS
-            const response = await emailjs.send(serviceId, templateId, templateParams, userId);
-            console.log('Email successfully sent!', response);
+            const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${listId}/contacts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log('Subscription successful', result);
 
             // Mostrar el modal de éxito
             setShowSuccessModal(true);
@@ -32,7 +43,7 @@ export function CtaDark() {
                 setEmail('');
             }, 3000);
         } catch (error) {
-            console.error('Email send failed:', error);
+            console.error('Subscription failed:', error);
             setMessage('There was an error subscribing. Please try again.');
         }
     };
@@ -53,7 +64,6 @@ export function CtaDark() {
                     </p>
                 </Reveal>
                 <form onSubmit={handleSubmit} className="w-full max-w-lg">
-                    {/* Ajusta el ancho del formulario con max-w-lg o el valor deseado */}
                     <div className="flex">
                         <input
                             type="email"
@@ -71,7 +81,6 @@ export function CtaDark() {
                 {message && <p className="mt-2">{message}</p>}
             </div>
 
-            {/* Modal de éxito */}
             {showSuccessModal && (
                 <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-green-500 p-8 rounded shadow-lg text-center">
