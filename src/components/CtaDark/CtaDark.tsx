@@ -9,14 +9,14 @@ export function CtaDark() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold font-montserrat">
                     <span className="block degradedBlue bg-Orange">Newsletter</span>
                 </h1>
-                <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center mb-10">
+                <p className="w-full mx-auto mt-5 text-base md:text-xl font-light font-montserrat tracking-wide text-center">
                     Receive our latest news directly in your inbox.
                 </p>
                 {/* Aquí reemplaza el iframe anterior por el nuevo iframe de Sendinblue */}
                 <iframe
                     width="540"
                     height="305"
-                    src="https://c80e6f6d.sibforms.com/serve/MUIFAG1Of-K8CkXwB9hXXkhIeK4GdTyQJ5RojR0kMTKLkQ7z6PSeaOaUiZvyV0dG6-RTpyZHCPRcyb9xYkxvWpDcXf2T5YFYVzyyGyefYz03Gb6s99fvfTY-a24Ta3MQC6OiEnrabBMXSEj-u8K0o9Lvy6jvMmud4gA9lCL0kuaIUraOMXF_aiRP3If2bREo8unl3aDolojKsn1X"
+                    src="https://c80e6f6d.sibforms.com/serve/MUIFAGOvP5Qvb3AuRccQhxtF4QegfKwDpJU0CEgYGEHQ-BL0RbbDI2P72GG0L46PleXQ77HNgdFZrjRY_fZs03YSrH6nJhFRTGpryiRTx4D0460UZScoSfp6A7Pt4lnVBaqu2S6j6q7T4nWuhBBUHfy29_-iWk1RO1h5FkTwFReUQyzHcZWZ1AGi1dgIE8vKJ8HhEUDI_wq2xFsd"
                     frameBorder="0"
                     scrolling="auto"
                     allowFullScreen
