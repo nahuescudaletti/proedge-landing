@@ -1,15 +1,18 @@
 "use client"
-import { useState } from 'react'; 
+import { useState } from 'react'; // Importa useState desde React
 import { getBasePath } from '@/utils/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
-import axios from 'axios';
+import emailjs from 'emailjs-com';
 
 export default function FormProducts() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const title = searchParams.get('title');
     const description2 = searchParams.get('description2');
-
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+    
     // Estado para controlar la visibilidad del modal de éxito
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -30,41 +33,41 @@ export default function FormProducts() {
 
         // Configurar los parámetros para enviar el correo electrónico
         const params = {
-            sender: { email: "nahueby17@gmail.com", name: "Nahuel Scudaletti" },
-            to: [{ email: formData.email, name: formData.firstName }],
-            subject: `New inquiry about ${formData.product}`,
-            htmlContent: `
-                <h1>New Inquiry</h1>
-                <p>Product: ${formData.product}</p>
-                <p>Name: ${formData.firstName} ${formData.lastname}</p>
-                <p>Country: ${formData.country}</p>
-                <p>Email: ${formData.email}</p>
-                <p>Phone: ${formData.phone}</p>
-                <p>Message: ${formData.help}</p>
-                <p>Budget: ${formData.budget}</p>
-            `,
-            headers: { 'api-key': process.env.NEXT_PUBLIC_BREVO_API_KEY }
+            name: formData.firstName,
+            lastname: formData.lastname,
+            product: formData.product,
+            country: formData.country,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.help,
+            budget: formData.budget
         };
 
-        // Enviar el formulario usando Brevo
-        try {
-            const response = await axios.post('https://api.sendinblue.com/v3/smtp/email', params);
-            console.log('Email successfully sent!', response);
+        // Verificar si serviceId y templateId están definidos antes de enviar el correo electrónico
+        if (serviceId && templateId) {
+            try {
+                // Enviar el formulario usando EmailJS
+                const response = await emailjs.send(serviceId, templateId, params, userId);
+                console.log('Email successfully sent!', response);
 
-            // Mostrar el modal de éxito
-            setShowSuccessModal(true);
+                // Mostrar el modal de éxito
+                setShowSuccessModal(true);
 
-            // Limpiar los campos del formulario después de 3 segundos
-            setTimeout(() => {
-                setShowSuccessModal(false);
-                // Limpiar los campos del formulario
-                if (event.target instanceof HTMLFormElement) {
-                    event.target.reset();
-                }
-            }, 2500);
-        } catch (error) {
-            console.error('Email send failed:', error);
-            // Aquí podrías manejar el error, por ejemplo mostrando un mensaje de error al usuario
+                // Limpiar los campos del formulario después de 3 segundos
+                setTimeout(() => {
+                    setShowSuccessModal(false);
+                    // Limpiar los campos del formulario
+                    if (event.target instanceof HTMLFormElement) {
+                        event.target.reset();
+                    }
+                }, 2500);
+            } catch (error) {
+                console.error('Email send failed:', error);
+                // Aquí podrías manejar el error, por ejemplo mostrando un mensaje de error al usuario
+            }
+        } else {
+            console.error('EmailJS service ID or template ID is not defined.');
+            // Aquí podrías manejar el caso donde serviceId o templateId no están definidos, por ejemplo mostrando un mensaje de error al usuario
         }
     };
 
@@ -134,28 +137,40 @@ export default function FormProducts() {
                             <label style={{ color: 'white' }} htmlFor="help">
                                 How can we help you
                             </label>
-                            <textarea name="help" style={{ backgroundColor: 'rgb(48, 54, 73)', borderColor: 'rgb(41, 47, 59)', color: 'rgb(144, 144, 144)' }} id="help" placeholder="How can we help you?" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" required />
+                            <textarea name="help" style={{ backgroundColor: 'rgb(48, 54, 73)', borderColor: 'rgb(41, 47, 59)', color: 'rgb(144, 144, 144)' }} id="help" placeholder="How can we help you" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" required />
                         </div>
                         <div className="mb-4">
                             <label style={{ color: 'white' }} htmlFor="budget">
-                                Budget
+                                Expected Budget:
                             </label>
-                            <input name="budget" style={{ backgroundColor: 'rgb(48, 54, 73)', borderColor: 'rgb(41, 47, 59)', color: 'rgb(144, 144, 144)' }} id="budget" type="text" placeholder="Budget" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" required />
+                            <select name="budget" style={{ backgroundColor: 'rgb(48, 54, 73)', borderColor: 'rgb(41, 47, 59)', color: 'rgb(144, 144, 144)' }} id="budget" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+                                <option>$1k - $3k</option>
+                                <option>$3k - $7k</option>
+                                <option>$7k - $15k</option>
+                            </select>
                         </div>
-                        <div className="flex items-center justify-between">
-                            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                        <div className="flex items-center justify-center">
+                            <button type="submit" className="px-4 py-3 rounded-md bg-OrangeRadial text-white font-semibold hover:bg-yellow-400 focus:outline-none focus:shadow-outline">
+                                Send Inquiry
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
+            {/* Modal de éxito */}
             {showSuccessModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white p-8 rounded-lg shadow-lg">
-                        <h2 className="text-2xl font-bold mb-4">Form submitted successfully!</h2>
-                        <p className="text-gray-700">Thank you for your inquiry. We will get back to you soon.</p>
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-green-500 p-8 rounded shadow-lg text-center">
+                        <p className="text-lg font-semibold mb-2">Request sent successfully!</p>
                     </div>
                 </div>
             )}
+            <button
+                onClick={() => router.back()}
+                className="mt-20 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+                Go Back
+            </button>
         </div>
     );
 }
