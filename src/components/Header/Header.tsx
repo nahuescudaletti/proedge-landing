@@ -27,7 +27,7 @@ export function Header() {
         <MotionTransition>
             <nav className="flex flex-wrap items-center justify-between max-w-10xl p-4 mx-auto md:py- bg-transparent">
                 <div className="flex items-center cursor-pointer">
-                    <Image src={`${getBasePath()}/assets/PE_logo_white_1_.svg`} width="150" height="100" alt="Logo Bank" />
+                    <Image src={`${getBasePath()}/assets/PE_logo_white_1_1_.svg`} width="100" height="100" alt="Logo Bank" />
                 </div>
                 <RiMenu3Line className="block text-3xl md:hidden cursor-pointer" onClick={toggleMobileMenu} />
                 <div className={`${openMobileMenu ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
