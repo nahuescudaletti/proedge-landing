@@ -1,4 +1,4 @@
-import { RiFacebookCircleFill, RiInstagramLine, RiLinkedinBoxFill, RiTwitterXFill } from "react-icons/ri";
+import { RiInstagramLine, RiLinkedinBoxFill, RiTiktokFill, RiWhatsappLine } from "react-icons/ri";
 
 export const footerSocialNetworks = [
   {
@@ -8,12 +8,12 @@ export const footerSocialNetworks = [
   },
   {
     id: 2,
-    icon: <RiFacebookCircleFill />,
+    icon: <RiTiktokFill />,
     link: "#"
   },
   {
     id: 3,
-    icon: <RiTwitterXFill />,
+    icon: <RiWhatsappLine />,
     link: "#"
   },
   {

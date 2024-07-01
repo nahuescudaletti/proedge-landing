@@ -1,6 +1,3 @@
-import { BestBusiness } from "@/components/BestBusiness";
-import { ChooseYourCards } from "@/components/ChooseYourCards";
-import { ControlBilling } from "@/components/ControlBilling";
 import { FirstBlock } from "@/components/FirstBlock";
 import { Footer } from "@/components/Footer/";
 import { Header } from "@/components/Header";
@@ -10,6 +7,7 @@ import { PaymentsMethods } from "@/components/PaymentsMethods";
 import { Team } from "@/components/Team";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import { TrackRecord } from "@/components/TrackRecord";
+import WppFloating from "@/components/WppFloating/WppFloating";
 
 export default function Home() {
   return (
@@ -21,6 +19,7 @@ export default function Home() {
       <OurHelp/>
       <Testimonials/>
       <Team/>
+      <WppFloating/>
       <PaymentsMethods />
       <Footer />
     </>

@@ -26,8 +26,8 @@ export function Header() {
     return (
         <MotionTransition>
             <nav className="flex flex-wrap items-center justify-between max-w-10xl p-4 mx-auto md:py- bg-transparent">
-                <div className="flex items-center cursor-pointer">
-                    <Image src={`${getBasePath()}/assets/PE_logo_white_1_1_.svg`} width="100" height="100" alt="Logo Bank" />
+                <div className="flex items-center cursor-pointer p-2">
+                    <Image src={`${getBasePath()}/assets/PE_icon_black__.png`} width="40" height="100" alt="Logo Bank" />
                 </div>
                 <RiMenu3Line className="block text-3xl md:hidden cursor-pointer" onClick={toggleMobileMenu} />
                 <div className={`${openMobileMenu ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
@@ -38,7 +38,7 @@ export function Header() {
                                     <span>Products</span> 
                                     <IoIosArrowDown className={`ml-1 ${openProductDropdown ? 'transform rotate-180' : ''}`} />
                                 </button>
-                                <div className={`${openProductDropdown ? 'block' : 'hidden'} absolute left-0 mt-2 w-48 bg-slate-900 rounded-lg shadow-lg z-10`}>
+                                <div className={`${openProductDropdown ? 'block' : 'hidden'} absolute left-0 mt-2 w-48 bg-black rounded-lg shadow-lg z-10`}>
                                     <div className="py-1">
                                         {DataDropDown.map(({ id, name, idLink }) => (
                                             <a key={id} href={idLink} className="block px-4 py-2 text-white-800 hover:bg-orange-500 hover:text-black" onClick={toggleMobileMenu}>{name}</a>

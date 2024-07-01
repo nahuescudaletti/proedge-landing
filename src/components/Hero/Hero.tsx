@@ -7,7 +7,7 @@ import Link from "next/link"
 export function Hero() {
     return (
         <MotionTransition>          
-            <div className="relative bg-cover bg-center z-0 h-[75vh] md:h-[100vh]" style={{ backgroundImage: `url(${getBasePath()}/assets/gradient2.png)` }}>
+            <div className="relative bg-cover bg-center z-0 h-[75vh] md:h-[100vh]" style={{ backgroundImage: `url(${getBasePath()}/assets/PE_wallpaper_web.png)` }}>
                 <div className="flex flex-col justify-center items-center h-full text-white">
                         <h3 className="text-center text-base md:text-xl lg:text-4xl font-light font-montserrat">We don’t do average, we do awesome</h3>
                         <Image
