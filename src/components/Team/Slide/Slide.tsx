@@ -24,6 +24,10 @@ export function Slide() {
             pagination={{
                 clickable: true
             }}
+            mousewheel={{
+                forceToAxis: true,
+                sensitivity: 1
+            }}
             modules={[Navigation, Pagination, Mousewheel, Keyboard]}
             className="h-[250px] w-full md:max-w-7xl"
         >

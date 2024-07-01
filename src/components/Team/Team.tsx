@@ -11,7 +11,7 @@ export function Team() {
             <div className="grid max-w-6xl gap-8 mx-auto my-6 md:grid-cols-2">
                 <Reveal>
                     <h2 className="text-3xl md:text-4xl font-semibold text-center mb-10 font-montserrat">
-                        Meet our team
+                        Meet our team.
                     </h2>
                 </Reveal>
             </div>
