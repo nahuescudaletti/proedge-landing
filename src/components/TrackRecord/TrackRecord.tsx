@@ -20,7 +20,7 @@ export function TrackRecord() {
                         </Reveal>
                         <h4 className="text-sm md:text-xl mb-3">Trusted by thousands of creators and professionals worldwide</h4>
                         <Reveal>
-                            <p className="w-full md:w-4/5 mt-10 text-base md:text-lg font-normal font-montserrat">Explore our track record of outstanding achievements and discover how we've driven our clients' success through innovative strategies and tangible results.</p>
+                            <p className="w-full  mt-10 text-base md:text-lg font-normal font-montserrat">Explore our track record of outstanding achievements and discover how we've driven our clients' success through innovative strategies and tangible results.</p>
                         </Reveal>
                     </div>
                 </div>
